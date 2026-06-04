@@ -30,6 +30,18 @@ Each visualization lives in its own file under `app/widgets/`. It:
 - `dist/` and `build/` are gitignored — binary is not committed
 - Requires `libxcb-cursor0` on the host: `sudo apt-get install -y libxcb-cursor0`
 
+## Testing
+- Framework: `pytest`
+- Unit tests: simulation logic, seeded for reproducibility
+- Visual tests: save plot PNGs to `tests/output/` for manual inspection
+- `tests/output/` is gitignored — generated locally on each test run
+
+```bash
+source .venv/bin/activate
+pytest tests/
+# inspect tests/output/*.png for visual confirmation
+```
+
 ## Future
 - UI layer (PyQt) stays separate so a web frontend can be swapped in later
 - For Windows `.exe`, build must run on a Windows machine (PyInstaller is platform-specific)
