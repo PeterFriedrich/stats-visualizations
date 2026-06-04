@@ -1,6 +1,6 @@
 # Stats Visualizations
 
-Interactive desktop app for stats visualizations built with PyQt6. Used for STATS 151 tutoring.
+Interactive desktop app for stats visualizations built with PyQt6. Used for intro stats learning.
 
 ## Setup
 
