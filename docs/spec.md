@@ -14,3 +14,4 @@ Desktop app for interactive stats visualizations, used for STATS 151 tutoring.
 
 ## Out of scope (for now)
 - Web/deployable frontend (separate concern for later)
+- Other distribution types
