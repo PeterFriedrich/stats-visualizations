@@ -6,6 +6,8 @@
 ## Setup
 - venv at `.venv/`, not committed
 - Run with `python main.py` from project root
+- System deps required: `sudo apt-get install -y libxcb-cursor0`
+- For headless/CI rendering: `sudo apt-get install -y xvfb scrot`
 
 ## PyInstaller build
 - `--hidden-import matplotlib.backends.backend_qtagg` required — PyInstaller misses it otherwise
