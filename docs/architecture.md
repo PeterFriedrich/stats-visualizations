@@ -3,7 +3,7 @@
 ## Stack
 - **GUI**: PyQt6
 - **Plotting**: matplotlib (`FigureCanvasQTAgg` embedded in Qt)
-- **Data**: numpy, pandas
+- **Data**: numpy
 
 ## Structure
 ```
