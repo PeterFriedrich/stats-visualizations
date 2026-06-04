@@ -45,5 +45,12 @@ Lines on each histogram:
 - Single visualization for now; `MainWindow` loads `BesselCorrectionWidget` directly
 - Will add tabs/sidebar once there are 2+ visualizations
 
+## Distribution
+- **Local binary**: PyInstaller via `bash build.sh` → `dist/stats-visualizations` (~100MB single file)
+- `requirements-dev.txt` includes PyInstaller; `requirements.txt` is runtime-only
+- `dist/` and `build/` are gitignored — binary is not committed
+- Requires `libxcb-cursor0` on the host: `sudo apt-get install -y libxcb-cursor0`
+
 ## Future
 - UI layer (PyQt) stays separate so a web frontend can be swapped in later
+- For Windows `.exe`, build must run on a Windows machine (PyInstaller is platform-specific)
