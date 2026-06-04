@@ -19,19 +19,28 @@ pip install -r requirements.txt
 python main.py
 ```
 
+## Docs pipeline
+New features follow this order:
+1. **`docs/spec.md`** — what to build and why
+2. **`docs/architecture.md`** — how it fits into the structure
+3. Code — implement per the architecture
+4. **`docs/implementation-notes.md`** — log any non-obvious decisions
+
 ## Structure
 ```
 main.py              # entry point
 app/
   main_window.py     # top-level QMainWindow
-  widgets/           # individual visualization widgets (add here)
+  widgets/           # one file per visualization widget
+docs/
+  spec.md            # requirements and feature list
+  architecture.md    # design and widget pattern
+  implementation-notes.md  # gotchas and decisions log
 ```
 
 ## Adding a visualization
-1. Create a new file in `app/widgets/`, subclassing `QWidget`
-2. Embed a matplotlib figure using `FigureCanvasQTAgg`
-3. Add it to `MainWindow` (tab, sidebar item, etc.)
-
-## Notes
-- PyQt desktop UI is intentionally separate from any future web/deployable frontend
-- Keep each visualization self-contained in its own widget file
+1. Add it to `docs/spec.md`
+2. Note any structural changes in `docs/architecture.md`
+3. Create `app/widgets/<name>.py`, subclassing `QWidget`
+4. Embed matplotlib via `FigureCanvasQTAgg`
+5. Register it in `MainWindow`
