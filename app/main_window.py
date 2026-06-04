@@ -1,19 +1,10 @@
-from PyQt6.QtWidgets import QMainWindow, QLabel, QVBoxLayout, QWidget
-from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QMainWindow
+from app.widgets.bessel_correction import BesselCorrectionWidget
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Stats Visualizations")
-        self.setMinimumSize(800, 600)
-
-        placeholder = QLabel("Stats Visualizations")
-        placeholder.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        layout = QVBoxLayout()
-        layout.addWidget(placeholder)
-
-        container = QWidget()
-        container.setLayout(layout)
-        self.setCentralWidget(container)
+        self.setMinimumSize(1000, 650)
+        self.setCentralWidget(BesselCorrectionWidget())

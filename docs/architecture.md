@@ -7,22 +7,43 @@
 
 ## Structure
 ```
-main.py                  # entry point, boots QApplication
+main.py                        # entry point, boots QApplication
 app/
-  main_window.py         # top-level QMainWindow, navigation/layout
-  widgets/               # one file per visualization widget
-    <name>.py            # subclass QWidget, self-contained
+  main_window.py               # top-level QMainWindow, navigation/layout
+  widgets/                     # one file per visualization widget
+    bessel_correction.py       # Bessel's correction demo
 ```
 
 ## Widget pattern
 Each visualization lives in its own file under `app/widgets/`. It:
 - Subclasses `QWidget`
 - Owns its matplotlib figure and canvas
-- Exposes controls (sliders, dropdowns) internally
+- Exposes controls (sliders, spinboxes) internally
+- Runs simulation logic internally (no shared state)
+
+## BesselCorrectionWidget layout
+```
+┌─────────────────────────────────────────────────┐
+│  Controls (top bar)                             │
+│  μ: [____]  σ²: [____]  n: [slider]  iters: [__]│
+│  [ Run Simulation ]                             │
+├─────────────────────────────────────────────────┤
+│  Plot area                                      │
+│  ┌──────────────────┬──────────────────────┐   │
+│  │  Biased (÷n)     │  Unbiased (÷n-1)     │   │
+│  │  hist + lines    │  hist + lines        │   │
+│  └──────────────────┴──────────────────────┘   │
+│  Bias summary text below                        │
+└─────────────────────────────────────────────────┘
+```
+
+Lines on each histogram:
+- True σ² (red dashed)
+- Mean of estimator (blue solid)
 
 ## Navigation
-<!-- How are visualizations surfaced? Tabs, sidebar, dropdown? TBD. -->
-- TBD — decide once we have 2+ visualizations
+- Single visualization for now; `MainWindow` loads `BesselCorrectionWidget` directly
+- Will add tabs/sidebar once there are 2+ visualizations
 
 ## Future
 - UI layer (PyQt) stays separate so a web frontend can be swapped in later
