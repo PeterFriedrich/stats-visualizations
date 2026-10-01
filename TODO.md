@@ -32,12 +32,9 @@ symptom before acting on it.
 - [ ] STAT 151: `describe`, `binomialdist`, `normal`, `clt`, `confidence`, `pvalue`, `regression`, `chisquare`.
 - [ ] `bessel`: show the current sample's points with x̄ and μ marked, so the student sees why deviations from x̄ are smaller than deviations from μ. Propose first.
 
-### Housekeeping
-
-- [ ] Confirm the `server` session updated the `stats-visualizations` row in `/home/opc/CLAUDE.md` (it said "PyQt6 desktop app"; change requested 2026-10-01).
-
 ## Done
 
+- `server` session updated this repo's row in `/home/opc/CLAUDE.md` and the owner's project-list doc — 2026-10-01.
 - Rewrite merged (PR #1) and the site is live on GitHub Pages — 2026-10-01.
 - GitHub Pages enabled with source GitHub Actions (owner) — 2026-10-01.
 - Mathematics 30-1 and 30-2 first versions: `counting`, `permutations`, `combinations`, `binomial`, `odds`, `venn`, `tree`; counting sims listed under both courses — 2026-10-01 (DECISIONS rows).
