@@ -1,0 +1,17 @@
+{
+  "name": "stats-visualizations",
+  "private": true,
+  "description": "Interactive counting, probability and intro-statistics simulations for tutoring (Alberta Math 30-1, 30-2 and STAT 151)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "serve": "node tools/serve.js",
+    "verify": "node tools/verify-sims.js",
+    "check": "node --test && python3 scripts/check_doc_citations.py && python3 scripts/check_decisions_log.py",
+    "build": "node tools/build-site.js --out _site",
+    "verify:built": "node tools/build-site.js --out _site && VERIFY_ROOT=_site node tools/verify-sims.js"
+  }
+}
