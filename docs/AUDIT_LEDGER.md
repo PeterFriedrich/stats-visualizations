@@ -23,5 +23,8 @@ None yet.
 
 1. `bessel` — readouts against hand calculation at the defaults and the slider
    extremes (n = 2, n = 100, σ² = 25).
-2. `docs/DATA_SHEET.md` — the two formula sheets against the bulletin PDFs,
+2. The seven mathematics sims (`counting`, `permutations`, `combinations`,
+   `binomial`, `odds`, `venn`, `tree`) — readouts and on-canvas working against
+   hand calculation at the defaults and the slider extremes.
+3. `docs/DATA_SHEET.md` — the two formula sheets against the bulletin PDFs,
    read off the rendered page.

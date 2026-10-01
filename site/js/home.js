@@ -1,4 +1,4 @@
-import { courses, sims } from './catalog.js';
+import { courses, simsIn } from './catalog.js';
 import { el } from './lib/controls.js';
 
 const root = document.getElementById('catalog');
@@ -11,7 +11,7 @@ for (const course of courses) {
   for (const unit of course.units) {
     const u = el('div', { class: 'unit' }, units);
     el('h3', { text: unit.title }, u);
-    const list = sims.filter((s) => s.course === course.id && s.unit === unit.id);
+    const list = simsIn(course.id, unit.id);
     if (!list.length) {
       el('p', { class: 'unit-empty', text: 'Coming soon.' }, u);
       continue;

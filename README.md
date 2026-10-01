@@ -9,6 +9,8 @@ random draws is labelled as simulated and can be reproduced from its seed.
 
 | Course | Topic | Simulations |
 |---|---|---|
+| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Fundamental counting principle; permutations; combinations; binomial theorem and Pascal's triangle |
+| Mathematics 30-2 | Probability | Odds and probability; "or" on a Venn diagram; "and" on a tree diagram; plus the three counting sims |
 | STAT 151 | Sampling distributions and the central limit theorem | Why divide by n − 1? Bessel's correction |
 
 More are planned for every topic — see `docs/SPEC_phase1.md` and `TODO.md`.

@@ -1,10 +1,12 @@
 # Spec — Phase 1: the static site, and one simulation per topic
 
-**Status: scope APPROVED, sim list PROPOSED.** The owner approved the rewrite
-as a static site like physics_sim and chemistry_sim, covering STAT 151 plus the
-counting and probability topics of Mathematics 30-1 and 30-2 (2026-10-01,
-DECISIONS.md). The sim list in §3 is a starting proposal; it waits for the
-owner's approval or edits. Only `bessel` is built (ported from the PyQt app).
+**Status: scope APPROVED; Mathematics 30-1 and 30-2 rows BUILT as first
+versions; STAT 151 rows PROPOSED.** The owner approved the rewrite as a static
+site like physics_sim and chemistry_sim, covering STAT 151 plus the counting
+and probability topics of Mathematics 30-1 and 30-2, then asked for the basics
+to be built and adjusted later (2026-10-01, DECISIONS.md). The seven
+mathematics sims are first versions awaiting the owner's walkthrough. The
+STAT 151 rows other than `bessel` wait for the owner's approval or edits.
 
 ## 1. Goal
 
@@ -21,7 +23,7 @@ topic in §3 with at least one simulation.
   check → explain sequence without a tutor.
 - Devices: laptop and phone/tablet browsers. Light and dark mode.
 
-## 3. Scope (proposed, except `bessel`)
+## 3. Scope (mathematics built, STAT 151 proposed)
 
 Mathematics 30-1 and 30-2 rows follow the Alberta program of studies topics and
 the 2025–2026 diploma information bulletins (DATA_SHEET.md §1, §2). STAT 151
@@ -33,14 +35,14 @@ table."
 
 | Course | Topic | Simulation (catalog id) | Formula-sheet lines it uses |
 |---|---|---|---|
-| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Fundamental counting principle: fill slots one at a time, with restrictions (`counting`) | none (the principle is not on the sheet) |
-| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Permutations: <sub>n</sub>P<sub>r</sub>, repeated elements, objects kept together or apart (`permutations`) | n!, <sub>n</sub>P<sub>r</sub> |
-| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Combinations: <sub>n</sub>C<sub>r</sub>, committees, "at least" and "at most" by cases (`combinations`) | <sub>n</sub>C<sub>r</sub> |
-| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Binomial expansion: Pascal's triangle, (x + y)<sup>n</sup>, a chosen term (`binomial`) | general term t<sub>k+1</sub> |
-| Mathematics 30-2 | Probability | Odds ↔ probability, part-part against part-whole (`odds`) | none (odds are not on the sheet) |
-| Mathematics 30-2 | Probability | "Or": mutually exclusive and non-mutually exclusive events on a Venn diagram (`venn`) | P(A ∪ B), both forms |
-| Mathematics 30-2 | Probability | "And": independent and dependent events on a tree diagram, with and without replacement (`tree`) | P(A ∩ B), both forms |
-| Mathematics 30-2 | Probability | `counting`, `permutations`, `combinations` — the same sims as 30-1, listed under both courses (§6 question 1) | n!, <sub>n</sub>P<sub>r</sub>, <sub>n</sub>C<sub>r</sub> |
+| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Fundamental counting principle: fill slots one at a time, independent choices on a tree (`counting`, **built 2026-10-01**) | none (the principle is not on the sheet) |
+| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Permutations: <sub>n</sub>P<sub>r</sub>, repeated elements, (`permutations`, **built 2026-10-01**; objects kept together or apart are not yet covered) | n!, <sub>n</sub>P<sub>r</sub> |
+| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Combinations: <sub>n</sub>C<sub>r</sub>, committees, "at least" and "at most" by cases (`combinations`, **built 2026-10-01**) | <sub>n</sub>C<sub>r</sub> |
+| Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Binomial expansion: Pascal's triangle, (x + y)<sup>n</sup>, a chosen term (`binomial`, **built 2026-10-01**, linear terms only) | general term t<sub>k+1</sub> |
+| Mathematics 30-2 | Probability | Odds ↔ probability, part-part against part-whole (`odds`, **built 2026-10-01**) | none (odds are not on the sheet) |
+| Mathematics 30-2 | Probability | "Or": mutually exclusive and non-mutually exclusive events on a Venn diagram (`venn`, **built 2026-10-01**) | P(A ∪ B), both forms |
+| Mathematics 30-2 | Probability | "And": independent and dependent events on a tree diagram, with and without replacement (`tree`, **built 2026-10-01**) | P(A ∩ B), both forms |
+| Mathematics 30-2 | Probability | `counting`, `permutations`, `combinations` — the same sims as 30-1, listed under both courses (DECISIONS.md) | n!, <sub>n</sub>P<sub>r</sub>, <sub>n</sub>C<sub>r</sub> |
 | STAT 151 | Data collection and descriptive statistics | Mean, median, standard deviation and quartiles of points you drag, with a boxplot (`describe`) | course sheet (§6 question 2) |
 | STAT 151 | Probability distributions | Binomial distribution, built from <sub>n</sub>C<sub>r</sub> (`binomialdist`); normal curve areas and z-scores (`normal`) | course sheet and tables |
 | STAT 151 | Sampling distributions and the central limit theorem | Bessel's correction (`bessel`, **built — seed sim, ported from the PyQt app**); sampling distribution of x̄ (`clt`) | course sheet |
@@ -80,17 +82,15 @@ see `TODO.md`).
 
 ## 6. Questions for the owner
 
-1. **Shared counting sims.** Mathematics 30-2's Probability topic includes the
-   fundamental counting principle, permutations and combinations, the same
-   material as 30-1. Proposed: one sim each, listed under both courses. A
-   catalog entry holds one course today, so this changes the catalog schema.
-   The alternative is separate 30-2 versions.
+1. ~~**Shared counting sims.**~~ Settled 2026-10-01: one sim each, listed under
+   both courses through the catalog's `also` field (DECISIONS.md).
 2. **STAT 151 formula sheet and tables.** Which sheet and which z, t and χ²
    tables does the section use? Readouts have to match them (a table read to
    four decimals differs from an exact value). Nothing for STAT 151 is
    transcribed yet (DATA_SHEET.md §3).
-3. **Which sims, in what order?** The Mathematics 30-2 bulletin's commentary
-   names what students find hard: odds against probability, non-mutually
-   exclusive and dependent events, and problems with more than one case
-   (DATA_SHEET.md §2.2). Those point at `odds`, `venn`, `tree` and
-   `combinations` first.
+3. **Which STAT 151 sims, in what order?** `clt`, `describe` and `regression`
+   need no table and could be built before question 2 is answered.
+4. **What should the mathematics sims do next?** The bulletins name what
+   students find hard (DATA_SHEET.md §1.2, §2.2): permutations with three or
+   more constraints, problems with several cases, and binomial terms with
+   non-linear parts. The first versions cover one-step problems only.

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
-import { courses, sims, findSim } from '../site/js/catalog.js';
+import { sims, findSim, placements, simsIn } from '../site/js/catalog.js';
 
 test('test_catalog_every_sim_module_exports_page_contract', async () => {
   // sim-page.js calls mount(ui) and renders equations/prompts; a sim missing
@@ -22,9 +22,10 @@ test('test_catalog_ids_unique_and_units_exist', () => {
   assert.equal(new Set(ids).size, ids.length, 'duplicate sim id');
   for (const s of sims) {
     assert.match(s.id, /^[a-z0-9-]+$/, `${s.id}: ids are used in URLs and file names`);
-    const course = courses.find((c) => c.id === s.course);
-    assert.ok(course, `${s.id}: unknown course ${s.course}`);
-    assert.ok(course.units.some((u) => u.id === s.unit), `${s.id}: unknown unit ${s.unit}`);
+    // A sim may be listed under more than one course (`also`); every listing
+    // has to name a real course and unit, or the sim silently drops off the home page.
+    for (const p of placements(s)) assert.ok(p.course && p.unit, `${s.id}: unknown course or unit in ${JSON.stringify([s.course, s.unit, s.also])}`);
+    assert.ok(placements(s).every((p) => simsIn(p.course.id, p.unit.id).includes(s)), `${s.id}: not listed where it says`);
     assert.ok(s.title && s.summary && s.concepts.length, `${s.id}: missing card text`);
   }
   assert.equal(findSim('nope'), null);

@@ -1,6 +1,6 @@
 // Loads one sim into sim.html from ?id=<sim id>. The sim module supplies
 // `equations`, `prompts`, optional `legend`, and `mount(ui)`.
-import { findSim, unitOf } from './catalog.js';
+import { findSim, placements } from './catalog.js';
 
 const $ = (id) => document.getElementById(id);
 const id = new URLSearchParams(location.search).get('id');
@@ -17,11 +17,10 @@ function fail(msg) {
 if (!sim) {
   fail('That simulation does not exist.');
 } else {
-  const { course, unit } = unitOf(sim);
   document.title = `${sim.title} · Stats Sims`;
   $('sim-heading').textContent = sim.title;
   $('sim-summary').textContent = sim.summary;
-  $('sim-badge').textContent = `${course.title} · ${unit.title}`;
+  $('sim-badge').textContent = placements(sim).map((p) => `${p.course.title} · ${p.unit.title}`).join('  |  ');
 
   import(`./sims/${sim.id}.js`)
     .then((mod) => {

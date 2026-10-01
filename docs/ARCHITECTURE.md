@@ -51,6 +51,12 @@ function.** Rendering code can be wrong-looking; it cannot be wrong-valued.
 `tests/catalog.test.js` checks every catalog entry against this contract, and
 that no module in `sims/` is missing from the catalog.
 
+A catalog entry names one `course` and `unit`, and may list more in `also`
+(`[{ course, unit }]`). The counting sims use it to appear under both
+Mathematics 30-1 and 30-2; the home page and the sim page badge read
+`placements()`. A sim with nothing to animate still creates the clock for its
+redraw loop and hides the transport bar.
+
 ## 4. Time, randomness and drawing
 
 `lib/clock.js` runs one `requestAnimationFrame` loop per page. Simulated time
@@ -119,3 +125,27 @@ could mislead.
   result) either side of σ², floored at 0; estimates beyond it are counted in
   the averages and reported as "beyond the axis". Both panels share one count
   scale. The run stops at 50 000 samples.
+- **Counting principle** (`stats/counting.js` `product`, `sims/counting.js`):
+  independent choices only — the options at one step never depend on an
+  earlier choice — with up to 4 choices of up to 6 options. The tree draws as
+  many levels as stay readable and states the rest as "× n".
+- **Permutations** (`sims/permutations.js`): objects in a row only (no circular
+  arrangements, no objects kept together or apart). Up to 9 objects; a word of
+  up to 12 letters A–Z, other characters dropped. Arrangements are listed when
+  there are 400 or fewer, cut to what fits with "… and N more".
+- **Combinations** (`sims/combinations.js`): up to 12 objects. The committee
+  mode has two groups and one condition, on the number taken from the second
+  group; every possible split is a case, and the cases that fit are added.
+- **Binomial theorem** (`sims/binomial.js`): (ax + by)<sup>n</sup> with whole
+  a and b from −5 to 5 and n up to 10. Linear terms only: no x² or 1/x inside
+  the bracket, which is where the 30-1 bulletin says students struggle.
+- **Odds** (`stats/probability.js`, `sims/odds.js`): equally likely outcomes,
+  up to 20 favourable and 20 unfavourable. Odds print in lowest terms, so
+  0 favourable to 5 unfavourable prints 0 : 1.
+- **Venn diagram** (`sims/venn.js`): two events. The circles are a fixed size,
+  drawn overlapping or apart; areas are not to scale, and the counts in the
+  regions carry the sizes. Counts that cannot happen are refused with the
+  reason, not clamped.
+- **Tree diagram** (`sims/tree.js`): two draws from a bag of two colours, each
+  marble equally likely. Branch and path fractions are left unreduced so they
+  match the student's working (3/8 × 2/7 = 6/56); the readouts reduce them.

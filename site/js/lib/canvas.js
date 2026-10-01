@@ -148,6 +148,52 @@ export function subText(ctx, str, x, y, opts = {}) {
   if (rest) text(ctx, rest, x0 + wBase + wSub, y, o);
 }
 
+// A centred block of text, wrapped at spaces to fit maxW. `y` is the middle of
+// the first line; returns the y of the line after the last one.
+export function para(ctx, str, cx, y, maxW, { size = 13, weight = 500, lineH = size * 1.45, color } = {}) {
+  ctx.save();
+  ctx.font = font(size, weight);
+  const lines = [];
+  for (const word of str.split(' ')) {
+    const last = lines[lines.length - 1];
+    if (last !== undefined && ctx.measureText(`${last} ${word}`).width <= maxW) lines[lines.length - 1] = `${last} ${word}`;
+    else lines.push(word);
+  }
+  ctx.restore();
+  lines.forEach((s, i) => text(ctx, s, cx, y + i * lineH, { color, size, weight, align: 'center' }));
+  return y + lines.length * lineH;
+}
+
+// Lays short strings out left to right from (x, y), wrapping at maxW and
+// stopping before maxY. `grid` gives every item the widest item's width, so a
+// list reads in columns. Returns the y of the line after the last one and how
+// many items were drawn; the caller says so when some did not fit.
+export function flow(ctx, items, x, y, maxW, { maxY = Infinity, size = 13, weight = 500, gap = 14, lineH = 20, grid = false, color, colorOf } = {}) {
+  ctx.save();
+  ctx.font = font(size, weight);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  const widths = items.map((s) => ctx.measureText(s).width);
+  const cell = grid ? Math.max(0, ...widths) : 0;
+  let cx = x;
+  let cy = y;
+  let shown = 0;
+  for (let i = 0; i < items.length; i++) {
+    const w = grid ? cell : widths[i];
+    if (cx > x && cx + w > x + maxW) {
+      cx = x;
+      cy += lineH;
+    }
+    if (cy > maxY) break;
+    ctx.fillStyle = colorOf?.(i) ?? color ?? theme().ink;
+    ctx.fillText(items[i], cx, cy);
+    cx += w + gap;
+    shown += 1;
+  }
+  ctx.restore();
+  return { y: cy + lineH, shown };
+}
+
 // Saturating arrow length: near-proportional for small values, approaching
 // `maxPx` for large ones (value = ref gives maxPx / 2), so one slider extreme cannot throw an arrow off-canvas. Direction is
 // always exact; the magnitude lives in the readouts.

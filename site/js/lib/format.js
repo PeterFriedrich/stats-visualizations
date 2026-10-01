@@ -8,6 +8,12 @@ export function superscript(n) {
   return String(n).split('').map((ch) => SUP[ch] ?? ch).join('');
 }
 
+// Whole-number subscripts, for ₅P₃ and ₅C₃ on the canvas (no markup there).
+const SUBS = '₀₁₂₃₄₅₆₇₈₉';
+export function subscript(n) {
+  return String(n).replace(/\d/g, (d) => SUBS[d]);
+}
+
 export function fmt(x, sig = 3) {
   if (x === null || x === undefined || Number.isNaN(x)) return '—';
   if (!Number.isFinite(x)) return x > 0 ? '∞' : '−∞';
@@ -31,6 +37,17 @@ export function fixed(x, dp) {
   const [int, frac] = s.split('.');
   s = (int.length > 3 ? int.replace(/\B(?=(\d{3})+$)/g, '\u202f') : int) + (frac ? `.${frac}` : '');
   return x < 0 ? `−${s}` : s;
+}
+
+// A fraction given as a [numerator, denominator] pair of whole numbers, the way
+// students write it: 3/8, or a bare whole number when the denominator is 1.
+export function frac([n, d]) {
+  return d === 1 ? String(n) : `${n}/${d}`;
+}
+
+// The fraction and its decimal value: "3/8 = 0.375".
+export function fracDec([n, d], dp = 3) {
+  return d === 1 ? String(n) : `${n}/${d} = ${fixed(n / d, dp)}`;
 }
 
 export function withUnit(x, unit, sig = 3) {

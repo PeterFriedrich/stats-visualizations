@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { fmt, fixed, snap, superscript } from '../site/js/lib/format.js';
+import { fmt, fixed, frac, fracDec, snap, subscript, superscript } from '../site/js/lib/format.js';
 
 test('test_format_significant_figures', () => {
   assert.equal(fmt(9.81), '9.81');
@@ -16,6 +16,7 @@ test('test_format_scientific_notation_like_students_write_it', () => {
   assert.equal(fmt(3e8), '3.00 × 10⁸');
   assert.equal(fmt(-9.11e-31), '−9.11 × 10⁻³¹');
   assert.equal(superscript(-27), '⁻²⁷');
+  assert.equal(subscript(12), '₁₂');
 });
 
 test('test_format_non_finite', () => {
@@ -39,4 +40,13 @@ test('test_format_fixed_decimal_places', () => {
   assert.equal(fixed(-0.04, 1), '0.0');
   assert.equal(fixed(2.3, 2), '2.30');
   assert.equal(fixed(NaN, 1), '—');
+});
+
+test('test_format_fractions_like_students_write_them', () => {
+  assert.equal(frac([3, 8]), '3/8');
+  assert.equal(frac([1, 1]), '1');
+  assert.equal(frac([0, 1]), '0');
+  assert.equal(fracDec([3, 8]), '3/8 = 0.375');
+  assert.equal(fracDec([11, 26]), '11/26 = 0.423');
+  assert.equal(fracDec([1, 1]), '1');
 });
