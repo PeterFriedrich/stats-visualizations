@@ -15,7 +15,6 @@ symptom before acting on it.
 - [ ] **Approve or edit the STAT 151 rows of the phase 1 sim list** (SPEC_phase1.md §3) and say which to build first. Record the approval as a DECISIONS row.
 - [ ] **Say what the seven mathematics sims should change or add** after trying them (SPEC_phase1.md §6 question 4). They are first versions.
 - [ ] **Say which STAT 151 formula sheet and z, t and χ² tables the section uses** (SPEC_phase1.md §6 question 2). Blocks every STAT 151 sim that prints a table value.
-- [ ] **Merge the rewrite PR** (branch `static-site-rewrite`). It replaces the PyQt app on `main` and publishes the site.
 - [ ] **Keep or drop the GPLv3 `LICENSE`**, copied from chemistry_sim; this repo had none.
 
 ### Before tutoring with it
@@ -33,12 +32,10 @@ symptom before acting on it.
 - [ ] STAT 151: `describe`, `binomialdist`, `normal`, `clt`, `confidence`, `pvalue`, `regression`, `chisquare`.
 - [ ] `bessel`: show the current sample's points with x̄ and μ marked, so the student sees why deviations from x̄ are smaller than deviations from μ. Propose first.
 
-### Housekeeping
-
-- [ ] Ask the `server` session to update the `stats-visualizations` row in `/home/opc/CLAUDE.md` (it still says "PyQt6 desktop app") once the rewrite is on `main`.
-
 ## Done
 
+- `server` session updated this repo's row in `/home/opc/CLAUDE.md` and the owner's project-list doc — 2026-10-01.
+- Rewrite merged (PR #1) and the site is live on GitHub Pages — 2026-10-01.
 - GitHub Pages enabled with source GitHub Actions (owner) — 2026-10-01.
 - Mathematics 30-1 and 30-2 first versions: `counting`, `permutations`, `combinations`, `binomial`, `odds`, `venn`, `tree`; counting sims listed under both courses — 2026-10-01 (DECISIONS rows).
 - Rewrite as a static site with the physics_sim / chemistry_sim apparatus; `bessel` ported from the PyQt app — 2026-10-01 (DECISIONS rows).

@@ -13,6 +13,8 @@ random draws is labelled as simulated and can be reproduced from its seed.
 | Mathematics 30-2 | Probability | Odds and probability; "or" on a Venn diagram; "and" on a tree diagram; plus the three counting sims |
 | STAT 151 | Sampling distributions and the central limit theorem | Why divide by n − 1? Bessel's correction |
 
+**Live site:** https://peterfriedrich.github.io/stats-visualizations/
+
 More are planned for every topic — see `docs/SPEC_phase1.md` and `TODO.md`.
 Every page has a "Key equations" list and "Try this" predict-and-check prompts.
 
