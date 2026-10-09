@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mulberry32, normal, normalSample } from '../site/js/stats/random.js';
-import { mean, sampleVariance } from '../site/js/stats/variance.js';
+import { mulberry32, normal, normalSample } from '../site/js/maths/random.js';
+import { mean, sampleVariance } from '../site/js/maths/variance.js';
 
 test('test_random_same_seed_same_sequence', () => {
   // The seed on screen has to reproduce the run, on any machine.

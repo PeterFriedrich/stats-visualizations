@@ -8,7 +8,7 @@ Work follows this sequence. Do not skip steps — each one informs the next.
 |------|----------|---------|
 | 1. Spec | `docs/SPEC_<phase>.md` | What to build, who it is for, acceptance criteria |
 | 2. Architecture | `docs/ARCHITECTURE.md` | Module contracts, the sim page contract, key technical decisions |
-| 3. Stats | `site/js/stats/*.js` + `tests/*.test.js` | Pure functions first, each with tests against worked examples |
+| 3. Maths | `site/js/maths/*.js` + `tests/*.test.js` | Pure functions first, each with tests against worked examples |
 | 4. Sim | `site/js/sims/<id>.js` + `catalog.js` entry | UI and drawing only, calling the stats functions |
 | 5. Look at it | `npm run verify` + the screenshot | Phone and desktop, light and dark |
 
@@ -23,7 +23,7 @@ This project uses Claude Code. The pipeline above is designed for it:
 - **Architecture before implementation** — explicit module interfaces prevent
   different design decisions across separate conversations.
 - **One sim at a time** — implement, review, then move on.
-- **Tests alongside each stats module** — while the design intent is in context.
+- **Tests alongside each maths module** — while the design intent is in context.
 - **`CLAUDE.md` is the AI's working memory** — a convention that is not written
   there does not persist across sessions.
 - **A decision is a test first, prose second** — `docs/DECISIONS.md` rows cite
@@ -42,7 +42,7 @@ Needs node ≥ 20 and python ≥ 3.10 (guards only). No `npm install`.
 
 1. Propose it (CLAUDE.md "Comments & Scope"): which unit, what the student
    changes, what they read off, which equations.
-2. Maths in `site/js/stats/<topic>.js`, tested in `tests/<topic>.test.js`
+2. Maths in `site/js/maths/<topic>.js`, tested in `tests/<topic>.test.js`
    with a worked example. Name tests `test_<topic>_<what>` so DECISIONS rows can
    cite them.
 3. Sim module in `site/js/sims/<id>.js` exporting `equations`, `prompts`,
@@ -52,7 +52,7 @@ Needs node ≥ 20 and python ≥ 3.10 (guards only). No `npm install`.
 
 ## Code Conventions
 
-- Stats modules are pure: no DOM, no `Math.random()` (take a seeded `rng` from `stats/random.js`), notation as the formula sheets print it.
+- Maths modules are pure: no DOM, no `Math.random()` (take a seeded `rng` from `maths/random.js`), notation as the formula sheets print it.
 - Formulas and notation follow the course formula sheets (`docs/DATA_SHEET.md`).
 - Readouts through `lib/format.js` (`fmt()` significant figures, `fixed()` decimal places). A simulated readout is labelled "simulated".
 - Colours only through CSS tokens (`--c-*`) and `theme()` on canvas.
@@ -64,7 +64,7 @@ Needs node ≥ 20 and python ≥ 3.10 (guards only). No `npm install`.
 ├── site/                     # the web app (published as-is)
 │   ├── index.html, sim.html
 │   ├── css/style.css
-│   └── js/{catalog,home,sim-page}.js, stats/, lib/, sims/
+│   └── js/{catalog,home,sim-page}.js, maths/, lib/, sims/
 ├── tests/                    # node:test — stats, format, catalog, repo invariants
 ├── tools/                    # serve.js, verify-sims.js, todo_archive.py, retrieval_report.py
 ├── scripts/                  # guards (check_*.py) and the handoff-gap hook

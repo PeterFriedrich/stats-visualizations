@@ -1,4 +1,4 @@
-import * as P from '../stats/probability.js';
+import * as P from '../maths/probability.js';
 import { fitCanvas, theme, clear, line, text } from '../lib/canvas.js';
 import { section, slider, toggle, readouts } from '../lib/controls.js';
 import { createClock } from '../lib/clock.js';

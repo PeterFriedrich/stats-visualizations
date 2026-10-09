@@ -15,11 +15,14 @@ symptom before acting on it.
 - [ ] **Approve or edit the STAT 151 rows of the phase 1 sim list** (SPEC_phase1.md §3) and say which to build first. Record the approval as a DECISIONS row.
 - [ ] **Say what the seven mathematics sims should change or add** after trying them (SPEC_phase1.md §6 question 4). They are first versions.
 - [ ] **Say which STAT 151 formula sheet and z, t and χ² tables the section uses** (SPEC_phase1.md §6 question 2). Blocks every STAT 151 sim that prints a table value.
+- [ ] **Confirm the Mathematics 20-1 textbook** (assumed *Pre-Calculus 11*) so DATA_SHEET.md §4 can be checked against it.
+- [ ] **Name the Mathematics 20-1 topics to add** after quadratics.
+- [ ] **Choose a new site name**, then rename the repo, the Pages URL, the local folder and session, and ask `server` to update `/home/opc/CLAUDE.md`. Check whether the old Pages URL keeps working.
 - [ ] **Keep or drop the GPLv3 `LICENSE`**, copied from chemistry_sim; this repo had none.
 
 ### Before tutoring with it
 
-- [ ] **Owner walkthrough of every sim against hand calculations.** SPEC_phase1.md §5 criterion 6. Done when each sim has a ✓ (or a bug filed) here. `bessel`: ☐ `counting`: ☐ `permutations`: ☐ `combinations`: ☐ `binomial`: ☐ `odds`: ☐ `venn`: ☐ `tree`: ☐
+- [ ] **Owner walkthrough of every sim against hand calculations.** SPEC_phase1.md §5 criterion 6. Done when each sim has a ✓ (or a bug filed) here. `bessel`: ☐ `counting`: ☐ `permutations`: ☐ `combinations`: ☐ `binomial`: ☐ `odds`: ☐ `venn`: ☐ `tree`: ☐ `complete-square`: ☐
 - [ ] **Map sims to program-of-studies outcomes.** Topics are matched by title only; check specific outcome codes against the Alberta programs of study before showing them on a page.
 - [ ] **Check DATA_SHEET.md against the rendered bulletin pages.** It was transcribed from the PDF text layer, which scrambles stacked fractions and drops the conditional bar in P(B | A).
 

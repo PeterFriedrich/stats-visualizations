@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import * as P from '../site/js/stats/probability.js';
+import * as P from '../site/js/maths/probability.js';
 
 test('test_probability_fractions_reduce_multiply_and_add', () => {
   assert.deepEqual(P.reduce([22, 52]), [11, 26]);

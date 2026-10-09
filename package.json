@@ -1,7 +1,7 @@
 {
   "name": "stats-visualizations",
   "private": true,
-  "description": "Interactive counting, probability and intro-statistics simulations for tutoring (Alberta Math 30-1, 30-2 and STAT 151)",
+  "description": "Interactive counting, probability and intro-statistics simulations for tutoring (Alberta Math 20-1, 30-1, 30-2 and STAT 151)",
   "type": "module",
   "engines": {
     "node": ">=20"

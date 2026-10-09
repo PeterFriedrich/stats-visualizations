@@ -17,7 +17,7 @@ site/
     ├── catalog.js        courses, units, sims — the single list
     ├── home.js           home page renderer
     ├── sim-page.js       loads js/sims/<id>.js into sim.html
-    ├── stats/            pure functions, seeded randomness, no DOM   ← tested
+    ├── maths/            pure functions, seeded randomness, no DOM   ← tested
     ├── lib/              canvas, controls, clock, format
     └── sims/             one module per simulation: UI + drawing only
 tests/                    node:test — stats, format, catalog, repo invariants
@@ -29,12 +29,12 @@ scripts/                  Python guards from the workflow template (stdlib only)
 
 | Layer | May | May not |
 |---|---|---|
-| `stats/` | maths, counting, random draws from a passed-in `rng` | touch the DOM, format numbers, know about pixels, call `Math.random()` |
+| `maths/` | maths, counting, random draws from a passed-in `rng` | touch the DOM, format numbers, know about pixels, call `Math.random()` |
 | `lib/` | DOM, canvas, formatting | contain statistics or counting formulas |
-| `sims/` | wire controls → stats → drawing | compute a readout without a `stats/` function |
+| `sims/` | wire controls → maths → drawing | compute a readout without a `maths/` function |
 | `catalog.js` | list sims and units | import sim modules |
 
-The rule that matters: **a number on screen traces to a tested `stats/`
+The rule that matters: **a number on screen traces to a tested `maths/`
 function.** Rendering code can be wrong-looking; it cannot be wrong-valued.
 
 ## 3. The sim page contract
@@ -46,7 +46,10 @@ function.** Rendering code can be wrong-looking; it cannot be wrong-valued.
 - `legend` (optional): `[{ color, label }]`, `color` naming a `--c-*` token.
 - `tallOnMobile` (optional): `true` gives the canvas a portrait aspect on phones
   for sims that stack two views.
-- `mount(ui)`: builds the sim into `ui = { canvas, controls, readouts, transport }`.
+- `mount(ui)`: builds the sim into `ui = { canvas, controls, readouts, transport, steps }`.
+  `steps` is a panel under the canvas, hidden unless the sim sets
+  `ui.steps.hidden = false` and fills it; `complete-square` uses it for its
+  worked steps, which need HTML (stacked fractions) the canvas cannot draw.
 
 `tests/catalog.test.js` checks every catalog entry against this contract, and
 that no module in `sims/` is missing from the catalog.
@@ -69,9 +72,9 @@ The physics and chemistry sites treat random motion as decoration that feeds no
 readout. Here sampling is often the subject, so the rule is different:
 
 - **Exact where a formula exists.** Counting, probability and expected values
-  come from closed-form `stats/` functions, so they equal the hand calculation.
+  come from closed-form `maths/` functions, so they equal the hand calculation.
 - **Simulated readouts are labelled and reproducible.** A readout that averages
-  random draws says "simulated", comes from `stats/random.js` seeded with the
+  random draws says "simulated", comes from `maths/random.js` seeded with the
   seed shown on screen, and sits beside its exact value where one exists.
 - **A run depends on the seed, not on frame timing.** A sim draws "sample
   number k" from the generator in order, so the first 1 000 samples are the
@@ -115,7 +118,7 @@ statistic (what the data gave); `--c-series-a`/`-b` are plain data series;
 Each is stated in the code where it lives and flagged to the student where it
 could mislead.
 
-- **Bessel's correction** (`stats/variance.js`, `sims/bessel.js`): samples are
+- **Bessel's correction** (`maths/variance.js`, `sims/bessel.js`): samples are
   drawn straight from a normal population N(μ, σ²). The PyQt version drew
   100 000 normal values first and resampled from them; that finite population
   had its own variance, slightly off σ², so the "true σ²" line was not exactly
@@ -125,7 +128,7 @@ could mislead.
   result) either side of σ², floored at 0; estimates beyond it are counted in
   the averages and reported as "beyond the axis". Both panels share one count
   scale. The run stops at 50 000 samples.
-- **Counting principle** (`stats/counting.js` `product`, `sims/counting.js`):
+- **Counting principle** (`maths/counting.js` `product`, `sims/counting.js`):
   independent choices only — the options at one step never depend on an
   earlier choice — with up to 4 choices of up to 6 options. The tree draws as
   many levels as stay readable and states the rest as "× n".
@@ -139,7 +142,7 @@ could mislead.
 - **Binomial theorem** (`sims/binomial.js`): (ax + by)<sup>n</sup> with whole
   a and b from −5 to 5 and n up to 10. Linear terms only: no x² or 1/x inside
   the bracket, which is where the 30-1 bulletin says students struggle.
-- **Odds** (`stats/probability.js`, `sims/odds.js`): equally likely outcomes,
+- **Odds** (`maths/probability.js`, `sims/odds.js`): equally likely outcomes,
   up to 20 favourable and 20 unfavourable. Odds print in lowest terms, so
   0 favourable to 5 unfavourable prints 0 : 1.
 - **Venn diagram** (`sims/venn.js`): two events. The circles are a fixed size,
@@ -149,3 +152,12 @@ could mislead.
 - **Tree diagram** (`sims/tree.js`): two draws from a bag of two colours, each
   marble equally likely. Branch and path fractions are left unreduced so they
   match the student's working (3/8 × 2/7 = 6/56); the readouts reduce them.
+- **Completing the square** (`maths/quadratic.js`, `sims/complete-square.js`):
+  whole-number a (−5 to 5, not 0), b and c (−20 to 20), so every step is an
+  exact fraction. The area model shows the bracket x² + kx (k = b ÷ a); the
+  side x is drawn at an arbitrary length because x is unknown, and the strip
+  width is scaled to h = k ÷ 2, clamped so a strip stays visible and on the
+  canvas. A negative k is drawn as area taken away: two strips overlap in a
+  corner that is taken twice, so h² is added back. Steps after the current one
+  stay hidden, and the vertex readouts and graph marks appear only at the last
+  step, so a student can work ahead on paper.

@@ -1,6 +1,6 @@
-import * as V from '../stats/variance.js';
-import { mulberry32 } from '../stats/random.js';
-import { createTally } from '../stats/tally.js';
+import * as V from '../maths/variance.js';
+import { mulberry32 } from '../maths/random.js';
+import { createTally } from '../maths/tally.js';
 import { fitCanvas, theme, clear, line, text, niceStep } from '../lib/canvas.js';
 import { section, slider, readouts } from '../lib/controls.js';
 import { createClock } from '../lib/clock.js';

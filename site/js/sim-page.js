@@ -1,5 +1,6 @@
 // Loads one sim into sim.html from ?id=<sim id>. The sim module supplies
-// `equations`, `prompts`, optional `legend`, and `mount(ui)`.
+// `equations`, `prompts`, optional `legend`, and `mount(ui)`. `ui.steps` is a
+// panel under the canvas, hidden unless a sim with worked steps un-hides it.
 import { findSim, placements } from './catalog.js';
 
 const $ = (id) => document.getElementById(id);
@@ -45,6 +46,7 @@ if (!sim) {
         controls: $('sim-controls'),
         readouts: $('sim-readouts'),
         transport: $('sim-transport'),
+        steps: $('sim-steps'),
       });
     })
     .catch((err) => {

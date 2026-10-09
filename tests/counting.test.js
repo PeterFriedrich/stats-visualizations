@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import * as C from '../site/js/stats/counting.js';
+import * as C from '../site/js/maths/counting.js';
 
 test('test_counting_principle_multiplies_the_stages', () => {
   // 3 shirts, 2 pants, 2 shoes: 3 × 2 × 2 = 12 outfits.
