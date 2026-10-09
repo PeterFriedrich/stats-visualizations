@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mulberry32 } from '../site/js/stats/random.js';
-import * as V from '../site/js/stats/variance.js';
-import { createTally } from '../site/js/stats/tally.js';
+import { mulberry32 } from '../site/js/maths/random.js';
+import * as V from '../site/js/maths/variance.js';
+import { createTally } from '../site/js/maths/tally.js';
 
 const close = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg ?? ''} ${a} vs ${b}`);
 

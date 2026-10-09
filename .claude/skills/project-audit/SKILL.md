@@ -147,7 +147,7 @@ P(A ∪ B), P(B | A)). Probabilities are values from 0 to 1 unless the label say
 percent; odds are labelled "in favour" or "against". "Or" is inclusive.
 
 ### Readouts trace to tested stats
-Each number on screen comes from a function in `site/js/stats/` that a test
+Each number on screen comes from a function in `site/js/maths/` that a test
 exercises (docs/DECISIONS.md, the "every on-screen number" row). A formula
 written inline in a sim module is a finding even when it is right.
 

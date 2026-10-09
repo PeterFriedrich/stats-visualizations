@@ -31,9 +31,9 @@ A static web app of interactive simulations for tutoring counting, probability a
 
 ## Code Style
 - **A decision that protects a number is a test first, prose second.** Write the guard, then the `DECISIONS.md` row cites its ID (`test_x` — the string that opens a `test(...)` title). A row with nothing to cite is tagged `[unverifiable]`. `scripts/check_decisions_log.py` gates new rows on the merge path.
-- **Maths lives in `site/js/stats/`, pure and DOM-free.** Sims only draw and wire controls; any number shown in a readout comes from a `stats/` function that has a test. Rendering code contains no formulas beyond scaling to pixels.
+- **Maths lives in `site/js/maths/`, pure and DOM-free.** Sims only draw and wire controls; any number shown in a readout comes from a `maths/` function that has a test. Rendering code contains no formulas beyond scaling to pixels.
 - **Exact over simulated** wherever a formula exists (<sub>n</sub>P<sub>r</sub>, P(A ∪ B), expected values), so readouts equal the hand calculation.
-- **Randomness is seeded.** Every draw goes through an `rng` from `stats/random.js`, never `Math.random()`; the seed is on screen; a readout built from draws is labelled "simulated" and sits beside its exact value where one exists. A run must depend on the seed only, not on frame timing.
+- **Randomness is seeded.** Every draw goes through an `rng` from `maths/random.js`, never `Math.random()`; the seed is on screen; a readout built from draws is labelled "simulated" and sits beside its exact value where one exists. A run must depend on the seed only, not on frame timing.
 - **Notation is the formula sheet's** (`docs/DATA_SHEET.md`): <sub>n</sub>P<sub>r</sub>, <sub>n</sub>C<sub>r</sub>, P(A ∪ B), P(B | A). Probabilities are values from 0 to 1 unless the label says percent; odds are labelled "in favour" or "against". A table value or method the sheet does not print needs a DECISIONS row naming its source.
 - Readouts go through `lib/format.js` (`fmt()` for significant figures, `fixed()` for decimal places).
 - No dependencies and no build step: ES modules served as-is. Adding one is a DECISIONS row.

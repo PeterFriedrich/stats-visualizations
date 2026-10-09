@@ -68,11 +68,11 @@ see `TODO.md`).
 
 ## 5. Acceptance criteria
 
-1. Every readout comes from a function in `site/js/stats/` with a unit test
+1. Every readout comes from a function in `site/js/maths/` with a unit test
    that checks it against a worked example.
 2. Formulas and notation are the formula sheet's (`DATA_SHEET.md`); a table
    value or method the sheet lacks has a named source and a DECISIONS row.
-3. Every random draw comes from the seeded generator in `stats/random.js`, and
+3. Every random draw comes from the seeded generator in `maths/random.js`, and
    the seed is on screen.
 4. `npm run check` passes (unit tests + doc guards) on the merge gate.
 5. `npm run verify` loads every page at 390 px and 1280 px, light and dark,

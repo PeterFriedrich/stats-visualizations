@@ -1,4 +1,4 @@
-import * as C from '../stats/counting.js';
+import * as C from '../maths/counting.js';
 import { fitCanvas, theme, clear, line, text } from '../lib/canvas.js';
 import { section, slider, readouts } from '../lib/controls.js';
 import { createClock } from '../lib/clock.js';
