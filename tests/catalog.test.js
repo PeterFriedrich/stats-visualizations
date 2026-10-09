@@ -37,3 +37,13 @@ test('test_catalog_every_sim_module_is_listed', async () => {
   const listed = new Set(sims.map((s) => `${s.id}.js`));
   for (const f of files) assert.ok(listed.has(f), `site/js/sims/${f} is not in catalog.js, so no page links to it`);
 });
+
+test('test_sim_page_passes_the_steps_panel', async () => {
+  // complete-square writes its worked steps into ui.steps; without the panel
+  // in sim.html, or with it shown by default, every other sim changes too.
+  const { readFileSync } = await import('node:fs');
+  const html = readFileSync(new URL('../site/sim.html', import.meta.url), 'utf8');
+  const page = readFileSync(new URL('../site/js/sim-page.js', import.meta.url), 'utf8');
+  assert.match(html, /<div class="steps" id="sim-steps" hidden><\/div>/);
+  assert.match(page, /steps: \$\('sim-steps'\)/);
+});

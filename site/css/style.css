@@ -193,6 +193,31 @@ select, input[type="text"] {
 .eq-list li { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .eq-list .what { color: var(--c-muted); font-size: 14px; }
 
+/* Worked steps under the canvas (sims that set ui.steps visible). */
+.steps { border-top: 1px solid var(--c-border); padding: 12px 14px 14px; }
+.steps-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 8px; }
+.steps-head h2 { font-size: 15px; margin: 0; }
+.steps-head .ctl-buttons { flex-wrap: wrap; }
+.steps-count { margin-left: auto; font-size: 13px; color: var(--c-muted); font-variant-numeric: tabular-nums; }
+.btn:disabled { opacity: .45; cursor: default; border-color: var(--c-border); }
+.steps-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; counter-reset: step; }
+.steps-list > li { counter-increment: step; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 0 10px; padding: 8px 10px; border-radius: 8px; }
+.steps-list > li::before { content: counter(step); grid-row: 1 / span 3; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--c-border); color: var(--c-muted); display: grid; place-items: center; font-size: 12px; font-weight: 600; }
+.steps-list > li.now { background: var(--c-accent-soft); }
+.steps-list > li.now::before { background: var(--c-accent); border-color: var(--c-accent); color: var(--c-accent-ink); }
+.steps-list > li.past { opacity: .75; }
+.steps-list > li.ghost { opacity: .6; }
+.steps-list > li.ghost::before { border-style: dashed; }
+.step-title { font-weight: 600; font-size: 14px; }
+.step-math, .math { font-family: "Cambria Math", "STIX Two Math", Georgia, serif; }
+.step-math { font-size: 20px; margin: 2px 0; overflow-wrap: anywhere; }
+.step-why { color: var(--c-muted); font-size: 14px; max-width: 70ch; }
+.step-why .math { color: var(--c-ink); font-size: 1.1em; }
+.read-off { margin: 4px 0 0; padding-left: 18px; }
+.fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: .8em; line-height: 1.15; margin: 0 .12em; }
+.fr > span:first-child { border-bottom: 1px solid currentColor; padding: 0 .15em; }
+.step-math sup, .math sup, .eq sup { font-size: .65em; line-height: 0; }
+
 .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--c-muted); padding: 8px 12px 0; }
 .legend i { display: inline-block; width: 18px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 5px; }
 

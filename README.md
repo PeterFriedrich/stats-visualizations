@@ -1,7 +1,7 @@
 # stats-visualizations
 
 Interactive simulations for tutoring **counting, probability and introductory
-statistics**: Alberta Mathematics 30-1 (permutations, combinations and the
+statistics**, plus some Mathematics 20-1 topics: Alberta Mathematics 20-1 (quadratics), Mathematics 30-1 (permutations, combinations and the
 binomial theorem), Mathematics 30-2 (probability) and STAT 151. Each sim shows
 the idea, lets the student change the variables, and prints readouts that match
 a hand calculation with the course formula sheet. A readout that comes from
@@ -9,6 +9,7 @@ random draws is labelled as simulated and can be reproduced from its seed.
 
 | Course | Topic | Simulations |
 |---|---|---|
+| Mathematics 20-1 | Quadratic Functions and Equations | Completing the square |
 | Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Fundamental counting principle; permutations; combinations; binomial theorem and Pascal's triangle |
 | Mathematics 30-2 | Probability | Odds and probability; "or" on a Venn diagram; "and" on a tree diagram; plus the three counting sims |
 | STAT 151 | Sampling distributions and the central limit theorem | Why divide by n − 1? Bessel's correction |

@@ -3,10 +3,16 @@
 // under js/sims/ exporting what sim-page.js needs.
 //
 // Mathematics 30-1 and 30-2 units are the Alberta program-of-studies topics
-// this site covers (counting and probability only). STAT 151 units follow the
+// this site covers (counting and probability only). Mathematics 20-1 units are
+// added one at a time as the owner names them (docs/SPEC_phase1.md §3). STAT 151 units follow the
 // University of Alberta calendar description (docs/SPEC_phase1.md §3).
 
 export const courses = [
+  {
+    id: 'm20-1',
+    title: 'Mathematics 20-1',
+    units: [{ id: 'quadratics', title: 'Quadratic Functions and Equations' }],
+  },
   {
     id: 'm30-1',
     title: 'Mathematics 30-1',
@@ -32,6 +38,14 @@ export const courses = [
 ];
 
 export const sims = [
+  {
+    id: 'complete-square',
+    course: 'm20-1',
+    unit: 'quadratics',
+    title: 'Completing the Square',
+    summary: 'Rewrite y = ax² + bx + c in vertex form, y = a(x − p)² + q, one step at a time. An area model shows why it works: the x-term splits into two strips around the x² square, and the missing corner, (b ÷ 2a)², completes it. The graph shows the vertex the steps lead to.',
+    concepts: ['vertex form y = a(x − p)² + q', 'area model', 'vertex and axis of symmetry', 'x-intercepts'],
+  },
   {
     id: 'odds',
     course: 'm30-2',

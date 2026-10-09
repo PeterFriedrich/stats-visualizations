@@ -7,6 +7,8 @@ and probability topics of Mathematics 30-1 and 30-2, then asked for the basics
 to be built and adjusted later (2026-10-01, DECISIONS.md). The seven
 mathematics sims are first versions awaiting the owner's walkthrough. The
 STAT 151 rows other than `bessel` wait for the owner's approval or edits.
+On 2026-10-09 the owner widened the scope to Mathematics 20-1 topics they
+teach, added one at a time; `complete-square` is the first (DECISIONS.md).
 
 ## 1. Goal
 
@@ -35,6 +37,7 @@ table."
 
 | Course | Topic | Simulation (catalog id) | Formula-sheet lines it uses |
 |---|---|---|---|
+| Mathematics 20-1 | Quadratic Functions and Equations | Completing the square: worked steps from y = ax² + bx + c to y = a(x − p)² + q beside an area model and the graph (`complete-square`, **built 2026-10-09**) | none (20-1 has no formula sheet; notation in DATA_SHEET.md §4) |
 | Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Fundamental counting principle: fill slots one at a time, independent choices on a tree (`counting`, **built 2026-10-01**) | none (the principle is not on the sheet) |
 | Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Permutations: <sub>n</sub>P<sub>r</sub>, repeated elements, (`permutations`, **built 2026-10-01**; objects kept together or apart are not yet covered) | n!, <sub>n</sub>P<sub>r</sub> |
 | Mathematics 30-1 | Permutations, Combinations, and Binomial Theorem | Combinations: <sub>n</sub>C<sub>r</sub>, committees, "at least" and "at most" by cases (`combinations`, **built 2026-10-01**) | <sub>n</sub>C<sub>r</sub> |
@@ -50,7 +53,8 @@ table."
 | STAT 151 | Correlation and regression | Least-squares line and r for points you drag (`regression`) | course sheet |
 | STAT 151 | Goodness of fit and contingency tables | Observed against expected counts and the χ² statistic (`chisquare`) | course sheet and tables |
 
-Out of scope for phase 1: the rest of Mathematics 30-1 and 30-2 (relations and
+Mathematics 20-1 topics are added only as the owner names them; the rest of
+the course is not planned. Out of scope for phase 1: the rest of Mathematics 30-1 and 30-2 (relations and
 functions, trigonometry, logical reasoning and set theory), accounts, saved
 progress, a backend, worked-solution generation, uploading data files, and any
 claim of alignment to specific outcome codes (topics are mapped by title only —

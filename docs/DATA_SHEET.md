@@ -86,3 +86,22 @@ The sheet's Logical Reasoning section lists set symbols only: A′ complement,
 STAT 151 is recorded here; the owner has to say which the section uses
 (SPEC_phase1.md §6). The `bessel` sim needs none: its formulas are the
 definitions of the two estimators and their expected values.
+
+## 4. Mathematics 20-1
+
+**No formula sheet.** Mathematics 20-1 has no diploma examination, so there is
+no Alberta Education sheet to transcribe. Notation follows the course
+resource, assumed to be *Pre-Calculus 11* (McGraw-Hill Ryerson, the WNCP
+resource Alberta schools use). ⚠️ The owner has not yet confirmed the
+textbook, and the forms below were written from the common WNCP convention,
+not transcribed from a page (`TODO.md`).
+
+### 4.1 Quadratic functions
+
+- Standard form: y = ax² + bx + c, a ≠ 0.
+- Vertex form: y = a(x − p)² + q. Vertex (p, q), axis of symmetry x = p;
+  a > 0 opens up with minimum value q, a < 0 opens down with maximum value q.
+- Completing the square: factor a out of the x-terms, add and subtract
+  (half the x-coefficient)² inside the brackets, move the subtracted term out
+  multiplied by a, and write the perfect square. Fractions stay exact
+  (5/2, not 2.5).

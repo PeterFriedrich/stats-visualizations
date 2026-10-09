@@ -46,7 +46,10 @@ function.** Rendering code can be wrong-looking; it cannot be wrong-valued.
 - `legend` (optional): `[{ color, label }]`, `color` naming a `--c-*` token.
 - `tallOnMobile` (optional): `true` gives the canvas a portrait aspect on phones
   for sims that stack two views.
-- `mount(ui)`: builds the sim into `ui = { canvas, controls, readouts, transport }`.
+- `mount(ui)`: builds the sim into `ui = { canvas, controls, readouts, transport, steps }`.
+  `steps` is a panel under the canvas, hidden unless the sim sets
+  `ui.steps.hidden = false` and fills it; `complete-square` uses it for its
+  worked steps, which need HTML (stacked fractions) the canvas cannot draw.
 
 `tests/catalog.test.js` checks every catalog entry against this contract, and
 that no module in `sims/` is missing from the catalog.
@@ -149,3 +152,12 @@ could mislead.
 - **Tree diagram** (`sims/tree.js`): two draws from a bag of two colours, each
   marble equally likely. Branch and path fractions are left unreduced so they
   match the student's working (3/8 × 2/7 = 6/56); the readouts reduce them.
+- **Completing the square** (`maths/quadratic.js`, `sims/complete-square.js`):
+  whole-number a (−5 to 5, not 0), b and c (−20 to 20), so every step is an
+  exact fraction. The area model shows the bracket x² + kx (k = b ÷ a); the
+  side x is drawn at an arbitrary length because x is unknown, and the strip
+  width is scaled to h = k ÷ 2, clamped so a strip stays visible and on the
+  canvas. A negative k is drawn as area taken away: two strips overlap in a
+  corner that is taken twice, so h² is added back. Steps after the current one
+  stay hidden, and the vertex readouts and graph marks appear only at the last
+  step, so a student can work ahead on paper.
